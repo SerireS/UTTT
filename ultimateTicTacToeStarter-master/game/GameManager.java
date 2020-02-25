@@ -1,7 +1,6 @@
-package tictactoe.game;
+package game;
 
 import bot.IBot;
-import game.IGameState;
 import move.IMove;
 
 /**
