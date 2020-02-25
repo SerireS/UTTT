@@ -19,7 +19,7 @@ public class UTTT extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GUI/view/FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
         
