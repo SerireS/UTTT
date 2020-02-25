@@ -1,7 +1,8 @@
 package uttt.BLL.game;
 
-import bot.IBot;
-import move.IMove;
+import uttt.BLL.bot.IBot;
+import uttt.BLL.move.IMove;
+import uttt.BLL.field.IField;
 
 /**
  * This is a proposed GameManager for Ultimate Tic-Tac-Toe,

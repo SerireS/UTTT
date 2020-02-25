@@ -1,6 +1,6 @@
 package uttt.BLL.game;
 
-import field.IField;
+        import uttt.BLL.field.IField;
 
 /**
  *
