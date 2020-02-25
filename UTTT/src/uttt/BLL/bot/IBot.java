@@ -1,4 +1,4 @@
-package bot;
+package uttt.BLL.bot;
 
 import game.IGameState;
 import move.IMove;
