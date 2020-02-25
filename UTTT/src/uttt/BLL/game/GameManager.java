@@ -1,4 +1,4 @@
-package game;
+package uttt.BLL.game;
 
 import bot.IBot;
 import move.IMove;
