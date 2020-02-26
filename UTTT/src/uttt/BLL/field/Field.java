@@ -18,8 +18,8 @@ public class Field implements IField {
     private String[][] board;
 
     public Field() {
-        macroBoard = new String [2][2];
-        board = new String [8][8];
+        macroBoard = new String [3][3];
+        board = new String [9][9];
         clearBoard();
     }
     
