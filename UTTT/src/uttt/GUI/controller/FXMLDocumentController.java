@@ -12,33 +12,32 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import uttt.BLL.game.GameManager;
+import uttt.BLL.game.GameState;
+import uttt.BLL.game.IGameState;
 
 /**
  *
  * @author jigzi
  */
 public class FXMLDocumentController implements Initializable {
-    
-    @FXML
-    private Label label;
-    
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+    private GameManager gm;
+    private IGameState gameState;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        gameState = new GameState();
+        gm = new GameManager(gameState);
     }    
     
     @FXML
     private void click(ActionEvent event) 
     {
         Button b = (Button)event.getSource();
+        if(){
         b.setText("X");
-        
+        else{
+        b.setText("Y");
+        }    }    
     }
-    
 }
