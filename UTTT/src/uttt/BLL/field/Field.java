@@ -16,9 +16,27 @@ public class Field implements IField {
 
     private String[][] macroBoard;
     private String[][] board;
+
+    public Field() {
+        macroBoard = new String [2][2];
+        board = new String [8][8];
+        clearBoard();
+    }
+    
+    
     @Override
     public void clearBoard() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int x = 0; x < macroBoard.length; x++) {
+            for (int y = 0; y < macroBoard.length; y++) {
+                macroBoard[x][y] = EMPTY_FIELD;
+            }
+
+                }
+                for (int x = 0; x < board.length; x++) {
+                for (int y = 0; y < board.length; y++) {
+                    board[x][y] = EMPTY_FIELD;
+            }
+        }
     }
 
     @Override
