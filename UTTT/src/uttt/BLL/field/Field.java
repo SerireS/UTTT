@@ -59,7 +59,7 @@ public class Field implements IField {
 
     @Override
     public String getPlayerId(int column, int row) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         return board[column][row];
     }
 
     @Override
