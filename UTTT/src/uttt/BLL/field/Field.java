@@ -51,12 +51,30 @@ public class Field implements IField {
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+            for (int x = 0; x < board.length; x++) {
+                for (int y = 0; y < board[x].length; y++) {
+                    if (!board[x][y].equals("."))
+                    return false;
+                    
+                }
+            
+        }
+            return true;
     }
 
     @Override
     public boolean isFull() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+            for (int x = 0; x < board.length; x++) {
+                for (int y = 0; y < board[x].length; y++) {
+                    if (!board[x][y].equals("."))
+                    return false;
+                    
+                }
+            
+        }
+            return true;
     }
 
     @Override
