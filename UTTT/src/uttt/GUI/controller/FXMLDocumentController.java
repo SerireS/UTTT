@@ -15,7 +15,6 @@ import javafx.scene.control.Label;
 import uttt.BLL.game.GameManager;
 import uttt.BLL.game.GameState;
 import uttt.BLL.game.IGameState;
-import uttt.BLL.move.Move;
 
 /**
  *
@@ -24,7 +23,7 @@ import uttt.BLL.move.Move;
 public class FXMLDocumentController implements Initializable {
     private GameManager gm;
     private IGameState gameState;
-    
+    private boolean currentPlayer;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -36,13 +35,15 @@ public class FXMLDocumentController implements Initializable {
     private void click(ActionEvent event) 
     {
         Button b = (Button)event.getSource();
-        boolean isSucces = gm.updateGame(new Move(0,0));
-        if (isSucces)
+        if(currentPlayer)
         {
-            if(gameState.getMoveNumber()%2==0)
-                b.setText("X");
-            else
-                b.setText("0");
+        b.setText("X");
+        currentPlayer = false;
+        }
+        else
+        {
+        b.setText("Y");
+        currentPlayer = true;
         }
     }
 }
