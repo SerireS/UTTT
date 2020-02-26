@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import uttt.BLL.game.GameManager;
 import uttt.BLL.game.GameState;
@@ -28,7 +29,7 @@ public class FXMLDocumentController implements Initializable {
     private IGameState gameState;
     private boolean currentPlayer;
     @FXML
-    private GridPane mainGridPane;
+    private AnchorPane mainGridPane;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -37,18 +38,17 @@ public class FXMLDocumentController implements Initializable {
         createAll();
     }
 
-    @FXML
     private void createAll() {
-        int btnWidth = 30;
-        int btnHeight = 30;
+        int btnWidth = 40;
+        int btnHeight = 40;
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
 
                 UTTTButton btn = new UTTTButton();
                 btn.setPrefSize(btnWidth, btnHeight);
-                btn.setLayoutX(27 + btnWidth * x);
-                btn.setLayoutY(145 + btnHeight * y);
-                btn.setMove(new Move(0, 0));
+                btn.setLayoutX(200   + (btnWidth+4) * x);
+                btn.setLayoutY(100 + (btnHeight+4) * y);
+                btn.setMove(new Move(x, y));
 
                 btn.setOnMouseClicked(event -> {
 
@@ -61,9 +61,8 @@ public class FXMLDocumentController implements Initializable {
                             b.setText("O");
                         }
                     }
-                    mainGridPane.getChildren().add(btn);
                 });
-
+                mainGridPane.getChildren().add(btn);
             }
 
         }
