@@ -23,6 +23,7 @@ import uttt.BLL.game.IGameState;
 public class FXMLDocumentController implements Initializable {
     private GameManager gm;
     private IGameState gameState;
+    private boolean currentPlayer;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -34,10 +35,16 @@ public class FXMLDocumentController implements Initializable {
     private void click(ActionEvent event) 
     {
         Button b = (Button)event.getSource();
-        if(){
+        if(currentPlayer)
+        {
         b.setText("X");
-        else{
+        currentPlayer = false;
+        }
+        else
+        {
         b.setText("Y");
-        }    }    
+        currentPlayer = true;
+        }
     }
 }
+    
