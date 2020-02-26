@@ -1,6 +1,7 @@
 package uttt.BLL.game;
 
 import uttt.BLL.bot.IBot;
+import uttt.BLL.field.IField;
 import uttt.BLL.move.IMove;
 
 /**
@@ -24,6 +25,7 @@ public class GameManager {
         BotVsBot
     }
     
+    private final String NON_AVAILABLE_MACRO_CELL = "-";
     private final IGameState currentState;
     private int currentPlayer = 0; //player0 == 0 && player1 == 1
     private GameMode mode = GameMode.HumanVsHuman;
@@ -123,22 +125,42 @@ public class GameManager {
     
     private Boolean verifyMoveLegality(IMove move)
     {
-        //Test if the move is legal   
-        //NOTE: should also check whether the move is placed on an occupied spot.
-        System.out.println("Checking move validity against macroboard available field");
-        System.out.println("Not currently checking move validity actual board");
-        return currentState.getField().isInActiveMicroboard(move.getX(), move.getY());
+        boolean isInActiveMicroboard = currentState.getField().isInActiveMicroboard(move.getX(), move.getY());
+        boolean isAvailable = currentState.getField().getPlayerId(move.getX(), move.getY()).equals(IField.EMPTY_FIELD);
+        return isInActiveMicroboard && isAvailable;
     }
-    
+        
     private void updateBoard(IMove move)
     {
-       //TODO: Update the board to the new state 
-        throw new UnsupportedOperationException("Not supported yet."); 
+       currentState.getField().getBoard()[move.getX()][move.getY()] = ""+currentPlayer;
     }
-    
+       
     private void updateMacroboard(IMove move)
     {
-       //TODO: Update the macroboard to the new state 
-       throw new UnsupportedOperationException("Not supported yet."); 
+       int macroX = move.getX()/3;
+       int macroY = move.getY()/3;
+       String[][] macroBoard = currentState.getField().getMacroboard();
+       
+       if(currentState.getField().getMacroboard() [macroX][macroY] != IField.AVAILABLE_FIELD
+            && currentState.getField().getMacroboard()[macroX][macroY] != NON_AVAILABLE_MACRO_CELL){
+           for (int x = 0; x < macroBoard.length; x++) {
+               for (int y = 0; y < macroBoard.length; y++) {
+                   if (currentState.getField().getMacroboard()[x][y] == NON_AVAILABLE_MACRO_CELL){
+                       macroBoard[x][y] = IField.AVAILABLE_FIELD;
+                   }
+               }
+           }
+       }
+       if (currentState.getField().getMacroboard()[macroX][macroY] == NON_AVAILABLE_MACRO_CELL
+            || currentState.getField().getMacroboard()[macroX][macroY] == IField.AVAILABLE_FIELD){
+           for (int x = 0; x < macroBoard.length; x++) {
+               for (int y = 0; y < macroBoard.length; y++) {
+                   if (macroBoard[x][y] == IField.AVAILABLE_FIELD){
+                       macroBoard[x][y] = NON_AVAILABLE_MACRO_CELL;
+                   }
+               }
+           }
+           currentState.getField().getMacroboard()[macroX][macroY] = IField.AVAILABLE_FIELD;
+       }
     }
 }
