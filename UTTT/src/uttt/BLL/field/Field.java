@@ -27,13 +27,13 @@ public class Field implements IField {
     @Override
     public void clearBoard() {
         for (int x = 0; x < macroBoard.length; x++) {
-            for (int y = 0; y < macroBoard.length; y++) {
-                macroBoard[x][y] = EMPTY_FIELD;
+            for (int y = 0; y < macroBoard[x].length; y++) {
+                macroBoard[x][y] = AVAILABLE_FIELD;
             }
 
                 }
                 for (int x = 0; x < board.length; x++) {
-                for (int y = 0; y < board.length; y++) {
+                for (int y = 0; y < board[x].length; y++) {
                     board[x][y] = EMPTY_FIELD;
             }
         }
@@ -76,12 +76,12 @@ public class Field implements IField {
 
     @Override
     public void setBoard(String[][] board) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.board = board;
     }
 
     @Override
     public void setMacroboard(String[][] macroboard) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.macroBoard = macroboard;
     }
     
 }
