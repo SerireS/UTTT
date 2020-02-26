@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="UTTT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/UTTT/dist/UTTT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

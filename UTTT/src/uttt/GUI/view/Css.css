@@ -1,0 +1,15 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 26. feb. 2020, 11.12.20
+    Author     : Jonas
+*/
+
+.Background
+{
+    -fx-background-image: url("../../Images/1.jpg");
+    -fx-background-size: cover;
+}
