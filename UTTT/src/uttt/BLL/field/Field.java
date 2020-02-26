@@ -5,8 +5,10 @@
  */
 package uttt.BLL.field;
 
+import java.util.ArrayList;
 import java.util.List;
 import uttt.BLL.move.IMove;
+import uttt.BLL.move.Move;
 
 /**
  *
@@ -41,7 +43,18 @@ public class Field implements IField {
 
     @Override
     public List<IMove> getAvailableMoves() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                List<IMove> moveList = new ArrayList();
+                for (int x = 0; x < board.length; x++) {
+                for (int y = 0; y < board[x].length; y++) {
+                    boolean isEmpty = board[x][y] == EMPTY_FIELD;
+                    if(isEmpty && isInActiveMicroboard(x, y))
+                    {
+                        moveList.add(new Move(x,y));
+                    }
+                    
+            }
+        }
+                return moveList;
     }
 
     @Override
@@ -54,7 +67,7 @@ public class Field implements IField {
         
             for (int x = 0; x < board.length; x++) {
                 for (int y = 0; y < board[x].length; y++) {
-                    if (!board[x][y].equals("."))
+                    if (!board[x][y].equals(EMPTY_FIELD))
                     return false;
                     
                 }
@@ -68,7 +81,7 @@ public class Field implements IField {
         
             for (int x = 0; x < board.length; x++) {
                 for (int y = 0; y < board[x].length; y++) {
-                    if (!board[x][y].equals("."))
+                    if (!board[x][y].equals(EMPTY_FIELD))
                     return false;
                     
                 }
@@ -79,7 +92,10 @@ public class Field implements IField {
 
     @Override
     public Boolean isInActiveMicroboard(int x, int y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int macroX = x/3;
+        int macroY = y/3;
+        
+        return macroBoard[macroX][macroY]==AVAILABLE_FIELD;
     }
 
     @Override
