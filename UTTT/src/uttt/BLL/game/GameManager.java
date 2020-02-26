@@ -138,14 +138,14 @@ public class GameManager {
        
     private void updateMacroboard(IMove move)
     {
-       int macroX = move.getX()/3;
-       int macroY = move.getY()/3;
+       int macroX = move.getX()%3;
+       int macroY = move.getY()%3;
        String[][] macroBoard = currentState.getField().getMacroboard();
        
        if(currentState.getField().getMacroboard() [macroX][macroY] != IField.AVAILABLE_FIELD
             && currentState.getField().getMacroboard()[macroX][macroY] != NON_AVAILABLE_MACRO_CELL){
            for (int x = 0; x < macroBoard.length; x++) {
-               for (int y = 0; y < macroBoard.length; y++) {
+               for (int y = 0; y < macroBoard[x].length; y++) {
                    if (currentState.getField().getMacroboard()[x][y] == NON_AVAILABLE_MACRO_CELL){
                        macroBoard[x][y] = IField.AVAILABLE_FIELD;
                    }
@@ -155,7 +155,7 @@ public class GameManager {
        if (currentState.getField().getMacroboard()[macroX][macroY] == NON_AVAILABLE_MACRO_CELL
             || currentState.getField().getMacroboard()[macroX][macroY] == IField.AVAILABLE_FIELD){
            for (int x = 0; x < macroBoard.length; x++) {
-               for (int y = 0; y < macroBoard.length; y++) {
+               for (int y = 0; y < macroBoard[x].length; y++) {
                    if (macroBoard[x][y] == IField.AVAILABLE_FIELD){
                        macroBoard[x][y] = NON_AVAILABLE_MACRO_CELL;
                    }

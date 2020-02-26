@@ -95,7 +95,7 @@ public class Field implements IField {
         int macroX = x/3;
         int macroY = y/3;
         
-        return macroBoard[macroX][macroY]==AVAILABLE_FIELD;
+        return macroBoard[macroX][macroY].equals(AVAILABLE_FIELD);
     }
 
     @Override
